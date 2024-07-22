@@ -61,6 +61,7 @@ export default function Login({
                         className="mt-1 block w-full"
                         autoComplete="current-password"
                         {...register("password")}
+                        type="password"
                     />
                     {errors.password && (
                         <InputError

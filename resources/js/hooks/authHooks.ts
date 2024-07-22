@@ -1,14 +1,13 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import axios from "axios";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { LoginFormInputs } from "@/Utils/validationSchema";
-import { exitCode } from "process";
-import { error, log } from "console";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/context/AuthContext";
+import { User } from "@/types";
 
 interface LoginResponse {
-    isLoading: boolean;
-    token: string;
-    user: any;
+    access_token: string;
+    user:User
 }
 
 interface UseLoginResult {
@@ -18,7 +17,9 @@ interface UseLoginResult {
   }
 
 export const useLogin = ():UseLoginResult => {
-    const signIn = useSignIn(); // Changed from useAuthUser to useSignIn
+    const navigate = useNavigate();
+    const {login} = useAuth();
+
 
     const mutation = useMutation<LoginResponse, Error, LoginFormInputs>({
         mutationFn: async (loginData: LoginFormInputs) => {
@@ -34,18 +35,9 @@ export const useLogin = ():UseLoginResult => {
             return response.data;
         },
         onSuccess: (data) => {
-            signIn({
-                // Changed from auth.signIn to auth
-                auth: {
-                    token: "ey....mA",
-                    type: "Bearer",
-                },
-                refresh: "ey....mA",
-                userState: {
-                    name: "React User",
-                    uid: 123456,
-                },
-            });
+            login(data.access_token, data.user)
+            navigate("/dashboard");
+
         },
         onError: (error) => {
             console.error("Login error:", error);

@@ -27,13 +27,11 @@ if (rootElement) {
         <React.StrictMode>
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <AuthProvider store={storeAuth}>
                     <QueryClientProvider client={queryClient}>
                         <Router>
                             <Main />
                         </Router>
-                        </QueryClientProvider>
-                    </AuthProvider>
+                    </QueryClientProvider>
                 </PersistGate>
             </Provider>
         </React.StrictMode>
