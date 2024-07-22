@@ -1,15 +1,11 @@
 // src/components/MainContent.tsx
 import InputLabel from '@/Components/InputLabel';
-import { User } from '@/types';
-import React, { useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
 
-interface MainContentProps {
-    user: User | null;
-    getToken:  string | null;
-  }
+const MainContent = () => {
+    const { user, getToken } = useAuth();
+    // console.log(getToken());
 
-const MainContent: React.FC<MainContentProps> = ({user , getToken}) => {
-    console.log(getToken);
   return (
     <div className="p-6 bg-gray-100 flex-grow">
       <h1 className="text font-bold mb-6">Ubah password user hotspot mikrotik</h1>
