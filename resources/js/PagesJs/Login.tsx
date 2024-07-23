@@ -43,7 +43,7 @@ export default function Login({
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
                     <input
-                        className="mt-1 block w-full"
+                        className="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                         {...register("email")}
                     />
 
@@ -58,7 +58,7 @@ export default function Login({
                 <div className="mt-4">
                     <InputLabel htmlFor="password" value="Password" />
                     <input
-                        className="mt-1 block w-full"
+                       className="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
                         autoComplete="current-password"
                         {...register("password")}
                         type="password"

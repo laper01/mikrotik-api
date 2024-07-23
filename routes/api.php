@@ -10,6 +10,12 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-Route::post('/ubah-password', [UserController::class, 'updatePassword']);
 
 Route::post('/login', [LoginApiController::class, 'login']);
+
+
+
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('/ubah-password', [UserController::class, 'updatePassword']);
+    Route::post('/logout',[LoginApiController::class, 'logout'] );
+});

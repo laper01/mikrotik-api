@@ -28,4 +28,10 @@ class LoginApiController extends Controller
 
         return response()->json(['error' => 'Unauthorized'], 401);
     }
+
+    public function logout (Request $request){
+        return 'kjdflksdj';
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'logout success']);
+    }
 }
