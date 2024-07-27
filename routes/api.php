@@ -17,5 +17,6 @@ Route::post('/login', [LoginApiController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/ubah-password', [UserController::class, 'updatePassword']);
+    Route::post('/import', [UserController::class, 'import']);
     Route::post('/logout',[LoginApiController::class, 'logout'] );
 });

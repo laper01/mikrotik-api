@@ -30,7 +30,6 @@ class LoginApiController extends Controller
     }
 
     public function logout (Request $request){
-        return 'kjdflksdj';
         $request->user()->currentAccessToken()->delete();
         return response()->json(['message' => 'logout success']);
     }

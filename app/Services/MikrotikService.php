@@ -25,6 +25,14 @@ class MikrotikService
         $this->client = new Client($config);
     }
 
+    public function getHotspotUsers()
+    {
+        $query = new Query('/ip/hotspot/user/print');
+        return $this->client->query($query)->read();
+    }
+
+
+
     public function findUserByName($username)
     {
         $query = (new Query('/ip/hotspot/user/print'))
@@ -34,20 +42,39 @@ class MikrotikService
         return $response ? $response[0] : null;
     }
 
-    // public function updateUserPassword($username, $newPassword)
-    // {
-    //     $query = (new Query('/ip/hotspot/user/set'))
-    //         ->equal('name', $username)
-    //         ->equal('password', $newPassword);
+    public function getHotspotUserDetails($username = null)
+    {
+        $query = new Query('/ip/hotspot/user/print');
 
-    //     return $this->client->query($query)->read();
-    // }
+        // Add more properties to fetch
+        $query->add('=.proplist=.id,name,profile,uptime,bytes-in,bytes-out,limit-bytes-in,limit-bytes-out,last-logged-out,disabled,comment');
+
+        if ($username) {
+            $query->where('name', $username);
+        }
+
+        return $this->client->query($query)->read();
+    }
 
     public function updateHotspotUserPassword($username, $newPassword)
     {
         $query = new Query('/ip/hotspot/user/set');
         $query->equal('.id', $username);
         $query->equal('password', $newPassword);
+
+        return $this->client->query($query)->read();
+    }
+
+
+    public function addHotspotUser($username, $password, $profile = null)
+    {
+        $query = new Query('/ip/hotspot/user/add');
+        $query->equal('name', $username);
+        $query->equal('password', $password);
+
+        if ($profile) {
+            $query->equal('profile', $profile);
+        }
 
         return $this->client->query($query)->read();
     }
