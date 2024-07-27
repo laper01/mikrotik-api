@@ -36,6 +36,7 @@ import { Link } from "react-router-dom"
 import React from "react"
 import Header from "./Header"
 import Nav from "./Nav"
+import { Toaster } from "@/Components/ui/toaster"
 
 interface MyComponentProps {
     children?: React.ReactNode;
@@ -72,6 +73,7 @@ export default function Theme({children, title}:MyComponentProps) {
             <h1 className="text-lg font-semibold md:text-2xl">{title}</h1>
           </div>
             {children}
+            <Toaster />
         </main>
       </div>
     </div>
