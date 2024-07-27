@@ -34,7 +34,7 @@ const MainContent = () => {
     return (
         <div className="p-6 bg-gray-100 flex-grow">
             <h1 className="text font-bold mb-6">
-                Ubah password user hotspot mikrotik
+                Ubah password user mahasiswa UMMAT
             </h1>
             <form onSubmit={handleSubmit(onSubmitForm)}>
                 <InputLabel htmlFor="username" value="username" />
