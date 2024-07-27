@@ -9,6 +9,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginFormInputs, loginSchema } from "@/Utils/validationSchema";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useLogin } from "@/hooks/authHooks";
+import { Button } from "@/Components/ui/button";
+import { Input } from "@/Components/ui/input";
 
 export default function Login({
     status,
@@ -42,8 +44,7 @@ export default function Login({
             <form onSubmit={handleSubmit(onSubmitForm)}>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
-                    <input
-                        className="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"
+                    <Input
                         {...register("email")}
                     />
 
