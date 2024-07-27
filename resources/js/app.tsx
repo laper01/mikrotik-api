@@ -10,6 +10,7 @@ import "../css/app.css";
 import AuthProvider from "react-auth-kit/AuthProvider";
 import createStore from "react-auth-kit/createStore";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "@/Components/theme-provider"
 
 const storeAuth = createStore({
     authName: "_auth",
@@ -29,7 +30,9 @@ if (rootElement) {
                 <PersistGate loading={null} persistor={persistor}>
                     <QueryClientProvider client={queryClient}>
                         <Router>
+                        <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
                             <Main />
+                            </ThemeProvider>
                         </Router>
                     </QueryClientProvider>
                 </PersistGate>

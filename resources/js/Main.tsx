@@ -14,7 +14,7 @@ const App: React.FC = () => {
         <AuthProvider>
             <Routes>
                 <Route path="/" element= {<GuestRoute element={ <Login canResetPassword={false} />}  /> } />
-                <Route path="/dashboard" element={<ProtectedRoute element={<Dashboard />} />} />
+                <Route path="/ubah-password" element={<ProtectedRoute element={<Dashboard />} />} />
                 {/* <Route path="/theme" element={<Theme />} /> */}
             </Routes>
         </AuthProvider>

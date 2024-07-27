@@ -12,7 +12,7 @@ const GuestRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
   const location = useLocation();
 
   if (isAuthenticated) {
-    return <Navigate to="/dashboard" state={{ from: location }} />;
+    return <Navigate to="/ubah-password" state={{ from: location }} />;
   }
 
   return element;

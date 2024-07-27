@@ -42,7 +42,7 @@ const ChangePassword = () => {
     };
 
     return (
-        <div className="p-6 bg-gray-100 flex-grow">
+        <div className="p-6 flex-grow">
             <form onSubmit={handleSubmit(onSubmitForm)}>
                 <Label htmlFor="username" > Nama Pengguna</Label>
                 <Input
