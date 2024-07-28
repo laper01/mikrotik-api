@@ -20,6 +20,8 @@ interface UseChangeResult {
     const { user, getToken } = useAuth();
     const token = getToken();
     const [success, setSuccess] = useState<string|null>('');
+    console.log(token);
+
 
     const mutation = useMutation<PasswordChangeResponse, Error, changePasswordForm>({
         mutationFn: async (data: changePasswordForm)=>{
